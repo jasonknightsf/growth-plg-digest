@@ -8,236 +8,48 @@
 <style>
   :root { color-scheme: light; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-    background: #f5f6fa;
-    color: #1a1d2e;
-    min-height: 100vh;
-  }
-
-  .header {
-    background: #fff;
-    border-bottom: 1px solid #e8eaf0;
-    padding: 20px 32px 16px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-  .header-inner {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .header-icon {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  .header-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: #1a1d2e;
-    letter-spacing: -0.3px;
-    line-height: 1.2;
-  }
-
-  .header-sub {
-    font-size: 12px;
-    color: #9ca3af;
-    margin-top: 2px;
-    font-weight: 400;
-  }
-
-  .header-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .badge {
-    border-radius: 6px;
-    padding: 4px 11px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  .badge-date {
-    background: #f3f4f6;
-    color: #6b7280;
-    border: 1px solid #e5e7eb;
-  }
-
-  .badge-count {
-    background: #ede9fe;
-    color: #7c3aed;
-    border: 1px solid #ddd6fe;
-  }
-
-  .tabs {
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif; background: #f5f6fa; color: #1a1d2e; min-height: 100vh; }
+  .header { background: #fff; border-bottom: 1px solid #e8eaf0; padding: 20px 32px 16px; position: sticky; top: 0; z-index: 10; }
+  .header-inner { max-width: 960px; margin: 0 auto; }
+  .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .header-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .header-title { font-size: 17px; font-weight: 700; color: #1a1d2e; letter-spacing: -0.3px; line-height: 1.2; }
+  .header-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+  .header-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .badge { border-radius: 6px; padding: 4px 11px; font-size: 12px; font-weight: 600; }
+  .badge-date { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+  .badge-count { background: #ede9fe; color: #7c3aed; border: 1px solid #ddd6fe; }
+  .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
-
-  .tab {
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    white-space: nowrap;
-    border: 1.5px solid transparent;
-    background: transparent;
-    color: #6b7280;
-    transition: all 0.12s;
-    font-family: inherit;
-  }
+  .tab { padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; border: 1.5px solid transparent; background: transparent; color: #6b7280; transition: all 0.12s; font-family: inherit; }
   .tab:hover { background: #f3f4f6; color: #374151; }
   .tab.active[data-cat="All"]               { background: #1a1d2e; color: #fff; border-color: #1a1d2e; }
   .tab.active[data-cat="PLG Strategy"]      { background: #6366f1; color: #fff; border-color: #6366f1; }
   .tab.active[data-cat="Onboarding & UX"]   { background: #0d9488; color: #fff; border-color: #0d9488; }
   .tab.active[data-cat="Conversion & PQLs"] { background: #d97706; color: #fff; border-color: #d97706; }
   .tab.active[data-cat="Growth Loops"]      { background: #2563eb; color: #fff; border-color: #2563eb; }
-
-  .content {
-    padding: 24px 32px 60px;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 16px;
-  }
-
-  @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .header { padding: 16px 20px 14px; }
-    .content { padding: 20px 20px 40px; }
-  }
-
-  .card {
-    background: #fff;
-    border: 1px solid #e8eaf0;
-    border-radius: 14px;
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: box-shadow 0.15s, transform 0.15s;
-  }
-  .card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
-
-  .card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .cat-pill {
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border-radius: 20px;
-    padding: 3px 10px;
-  }
+  .content { padding: 24px 32px 60px; max-width: 960px; margin: 0 auto; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 16px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .header { padding: 16px 20px 14px; } .content { padding: 20px 20px 40px; } }
+  .card { background: #fff; border: 1px solid #e8eaf0; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; transition: box-shadow 0.15s, transform 0.15s; }
+  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .cat-pill { font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
   .pill-plg        { background: #ede9fe; color: #6d28d9; }
   .pill-onboarding { background: #ccfbf1; color: #0f766e; }
   .pill-conversion { background: #fef3c7; color: #b45309; }
   .pill-growth     { background: #dbeafe; color: #1d4ed8; }
-
-  .source-tag {
-    font-size: 11px;
-    font-weight: 600;
-    color: #6b7280;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 5px;
-    padding: 2px 8px;
-    white-space: nowrap;
-  }
-
-  .card-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: #111827;
-    line-height: 1.45;
-    letter-spacing: -0.2px;
-  }
-
-  .card-summary {
-    font-size: 13px;
-    color: #4b5563;
-    line-height: 1.65;
-    flex: 1;
-  }
-
-  .card-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 10px;
-    border-top: 1px solid #f3f4f6;
-    margin-top: 2px;
-  }
-
-  .read-link {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #6366f1;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    transition: opacity 0.12s;
-  }
+  .source-tag { font-size: 11px; font-weight: 600; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 5px; padding: 2px 8px; white-space: nowrap; }
+  .card-title { font-size: 14px; font-weight: 700; color: #111827; line-height: 1.45; letter-spacing: -0.2px; }
+  .card-summary { font-size: 13px; color: #4b5563; line-height: 1.65; flex: 1; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f3f4f6; margin-top: 2px; }
+  .pub-date { font-size: 11px; font-weight: 500; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
+  .pub-date svg { opacity: 0.6; }
+  .read-link { font-size: 12.5px; font-weight: 600; color: #6366f1; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: opacity 0.12s; }
   .read-link:hover { opacity: 0.7; }
-
-  .empty {
-    text-align: center;
-    padding: 80px 24px;
-    color: #9ca3af;
-    font-size: 14px;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 11.5px;
-    color: #d1d5db;
-    border-top: 1px solid #f3f4f6;
-    margin-top: 20px;
-  }
+  .empty { text-align: center; padding: 80px 24px; color: #9ca3af; font-size: 14px; }
+  .page-footer { text-align: center; padding: 20px; font-size: 11.5px; color: #d1d5db; border-top: 1px solid #f3f4f6; margin-top: 20px; }
 </style>
 </head>
 <body>
@@ -270,106 +82,82 @@
 <div class="content">
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">No articles in this category.</div>
-  <div class="footer">Updated daily · Curated from Lenny's Newsletter, Reforge, ProductLed, Growth Unhinged &amp; more</div>
+  <div class="page-footer">Updated daily · Curated from Lenny's Newsletter, Reforge, ProductLed, Growth Unhinged &amp; more · 2025–2026 only</div>
 </div>
 
 <script>
 const DATA = [
   {
-    cat: "PLG Strategy",
-    pill: "pill-plg",
-    source: "ProductLed",
+    cat: "PLG Strategy", pill: "pill-plg", source: "ProductLed", date: "Mar 2025",
+    title: "State of B2B SaaS in 2025: Analysis of 446 Companies",
+    summary: "Self-serve revenue is the single most powerful growth lever in B2B SaaS—yet 36.3% of companies still report zero self-serve revenue. Companies that make the transition see 25.9% better free-to-paid conversion and 18.3% faster time-to-value compared to peers.",
+    url: "https://productled.com/blog/state-of-b2b-saas-2025-report"
+  },
+  {
+    cat: "PLG Strategy", pill: "pill-plg", source: "ProductLed", date: "Nov 2025",
     title: "PLG Predictions For 2026: The Playbook is Being Rewritten. Fast.",
-    summary: "AI onboarding makes activation instant by configuring experiences immediately, eliminating the traditional 10-step walkthrough. The new bar for 2026 is clear: can a user experience meaningful value in under 60 seconds?",
+    summary: "AI onboarding now makes activation instant by eliminating multi-step walkthroughs and configuring experiences based on user goals in real time. The defining benchmark for 2026 is no longer 'value in the first session'—it's value delivered in under 60 seconds.",
     url: "https://productled.com/blog/plg-predictions-for-2026"
   },
   {
-    cat: "PLG Strategy",
-    pill: "pill-plg",
-    source: "Reforge",
-    title: "Product-Led Growth is a Major Growth Motion, Not a Bag of Tricks",
-    summary: "PLG is a go-to-market strategy where the product itself is the primary driver of acquisition, conversion, and expansion—not marketing spend or a sales team. Companies that get this right build compounding advantages that are extremely difficult for competitors to replicate.",
-    url: "https://www.reforge.com/blog/product-led-growth"
+    cat: "PLG Strategy", pill: "pill-plg", source: "Growth Unhinged", date: "Feb 2025",
+    title: "The Best Growth Tactics of 2025",
+    summary: "Credit-based pricing surged through 2025, with 79 of the top 500 SaaS companies now offering it—up from 35 at the start of the year. For 2026, pricing is expected to swing back toward simplicity, with major platforms bundling AI at modest per-user increases rather than standalone AI tiers.",
+    url: "https://www.growthunhinged.com/p/2025-state-of-saas-pricing-changes"
   },
   {
-    cat: "PLG Strategy",
-    pill: "pill-plg",
-    source: "Growth Blueprint",
-    title: "The Old B2B Growth Playbook Is Dead. Here's What Replaces It.",
-    summary: "The fastest-growing B2B companies in 2026 aren't winning with better features or lower prices—they've rebuilt their products to do the work entirely rather than help customers work more efficiently. This shift from traditional SaaS to Vertical AI represents the new growth frontier.",
-    url: "https://growthblueprint.substack.com/p/the-old-b2b-growth-playbook-is-dead"
+    cat: "PLG Strategy", pill: "pill-plg", source: "Growth Unhinged", date: "Jan 2025",
+    title: "2025 SaaS Benchmarks: What's Really Going On in Software",
+    summary: "The median B2B SaaS company planned for 35% growth in 2025 but achieved only 26%—a nine-point gap revealing how challenging the current environment is. Top performers are now generating 40% of new ARR from existing customers, up from 25% in 2022, marking a decisive shift toward expansion as the primary growth engine.",
+    url: "https://www.growthunhinged.com/p/2025-saas-benchmarks-report"
   },
   {
-    cat: "PLG Strategy",
-    pill: "pill-plg",
-    source: "GTM Newsletter",
-    title: "The Growth OS Map: Building Defensible Loops in the AI Era",
-    summary: "You can no longer rent attention—you must build an operating system of defensible growth loops that compound over time. Best-in-class SaaS companies rely 2–3x more on customer advocacy than their peers for sustainable long-term growth.",
-    url: "https://thegtmnewsletter.substack.com/p/growth-loops-defensible-distribution-saas-gtm"
-  },
-  {
-    cat: "Onboarding & UX",
-    pill: "pill-onboarding",
-    source: "Growth Unhinged",
+    cat: "Onboarding & UX", pill: "pill-onboarding", source: "Growth Unhinged", date: "Apr 2025",
     title: "Your Guide to Product-Led Onboarding",
-    summary: "Personalizing onboarding by asking users their primary reason for signing up is almost guaranteed to improve activation rates. The best flows ask 1–2 targeted questions and then tailor the entire experience to help users reach value as fast as possible.",
+    summary: "Personalizing onboarding by asking users their primary reason for signing up is almost guaranteed to improve activation—yet most products still use a one-size-fits-all flow. The best sequences ask 1–2 targeted questions then tailor the entire experience around helping users reach their 'aha' moment as fast as possible.",
     url: "https://www.growthunhinged.com/p/your-guide-to-product-led-onboarding"
   },
   {
-    cat: "Onboarding & UX",
-    pill: "pill-onboarding",
-    source: "ProductLed",
-    title: "How to Reduce Time-To-Value Through Straight-Line Onboarding",
-    summary: "By understanding the problems users are searching to solve and customizing onboarding accordingly, Canva cut their time-to-value in half. AI-powered onboarding is no longer a luxury—customers now expect a personalized experience tailored to their industry, role, and goals.",
-    url: "https://productled.com/blog/straight-line-onboarding"
+    cat: "Onboarding & UX", pill: "pill-onboarding", source: "PLGTM", date: "Dec 2025",
+    title: "Inside PLGTM 2025: A Recap and 2026 Plans",
+    summary: "The 2025 PLG landscape saw a decisive shift toward hybrid product-led sales motions, where self-serve adoption leads and enterprise sales layers on top at precisely the right moment. For 2026, the biggest opportunity is combining AI-assisted onboarding with usage-based triggers to qualify and route users more precisely.",
+    url: "https://plgtm.substack.com/p/inside-plgtm-2025-a-recap-and-2026"
   },
   {
-    cat: "Onboarding & UX",
-    pill: "pill-onboarding",
-    source: "UX Movement",
-    title: "Why Onboarding Flow Is the New Signup Form",
-    summary: "Stop thinking of signup as a form—start thinking of it as an onboarding flow that leads with value, not friction. Progress indicators increase completion rates by making setup feel achievable, and benefit-driven messaging consistently outperforms feature-heavy copy.",
-    url: "https://uxmovement.substack.com/p/why-onboarding-flow-is-the-new-signup"
+    cat: "Onboarding & UX", pill: "pill-onboarding", source: "NewTechnique", date: "Jun 2025",
+    title: "Tips on PLG Onboarding Flows",
+    summary: "The most effective PLG onboarding flows reduce cognitive load by surfacing only what the user needs to accomplish their immediate goal—not the full feature set. Three structural improvements—contextual empty states, inline guidance, and milestone celebrations—have the highest documented impact on activation rates.",
+    url: "https://newtechnique.substack.com/p/tips-on-plg-onboarding-flows"
   },
   {
-    cat: "Onboarding & UX",
-    pill: "pill-onboarding",
-    source: "Priya Bhatia / Substack",
-    title: "Defining Activation in Product-Led B2B SaaS",
-    summary: "For B2B SaaS, activation means getting a team bought in—not just a single user—so the company or buyer will pay. Over 12 months, a 25% increase in activation drives a 34% rise in MRR, making it one of the highest-leverage metrics to optimize.",
-    url: "https://priyabhatia.substack.com/p/defining-activation-in-product-led"
-  },
-  {
-    cat: "Conversion & PQLs",
-    pill: "pill-conversion",
-    source: "Growth Unhinged",
+    cat: "Conversion & PQLs", pill: "pill-conversion", source: "Growth Unhinged", date: "Feb 2026",
     title: "The 2026 Free-to-Paid Conversion Report",
-    summary: "The median free-to-paid conversion rate across SaaS is 8%, but good is 25–35% and great is 50–60% when a credit card is required at signup. Free trials remain the dominant entry model at 57% of products—more than twice the rate of freemium at 26%.",
+    summary: "The median free-to-paid conversion across SaaS sits at 8% in 2026, but products requiring a credit card at signup see 5x higher conversion—25–35% is good, 50–60% is great. Free trials dominate as the primary entry model at 57% of products, more than double the rate of freemium at 26%.",
     url: "https://www.growthunhinged.com/p/free-to-paid-conversion-report"
   },
   {
-    cat: "Conversion & PQLs",
-    pill: "pill-conversion",
-    source: "ProductLed",
-    title: "How to Build a Lead Scoring Model to Uncover Product Qualified Leads",
-    summary: "PQLs convert at 20–30% in B2B SaaS, making them significantly more valuable than traditional marketing-qualified leads. Defining a PQL must be experimental—start with a hypothesis, target customers, and iterate based on actual sales conversion data.",
-    url: "https://productled.com/blog/lead-scoring-model-to-uncover-pqls"
+    cat: "Conversion & PQLs", pill: "pill-conversion", source: "SaaStr", date: "Sep 2025",
+    title: "85% of Business App Trials Start on Day 0. Don't Waste Your Shot.",
+    summary: "Analysis of 75,000 apps shows that 85% of trial users who will ever convert do so on the day they sign up—making Day 0 activation the single most critical window in your funnel. Products that fail to deliver a meaningful first-session experience almost never recover those users through follow-up or re-engagement.",
+    url: "https://cloud.substack.com/p/85-of-business-app-trials-start-on"
   },
   {
-    cat: "Growth Loops",
-    pill: "pill-growth",
-    source: "Reforge",
-    title: "Growth Loops are the New Funnels",
-    summary: "Growth loops are closed systems where every input goes through steps to generate an output that gets reinvested back as a new input—unlike funnels, which leak value at every stage. Each cycle makes the next easier, and the effort compounds down as the flywheel spins up.",
-    url: "https://www.reforge.com/blog/growth-loops"
+    cat: "Conversion & PQLs", pill: "pill-conversion", source: "Substack", date: "Oct 2025",
+    title: "Your Trial-to-Paid Conversion is Where Revenue Goes to Die",
+    summary: "Most SaaS companies invest heavily in acquisition but leave conversion to chance—treating trial-to-paid as a passive event rather than an active design problem. The highest-converting products identify the specific action that predicts upgrade and engineer every onboarding touchpoint to get users there.",
+    url: "https://angelastewartai.substack.com/p/your-trial-to-paid-conversion-is"
   },
   {
-    cat: "Growth Loops",
-    pill: "pill-growth",
-    source: "Growth Unhinged",
-    title: "Product-Led Marketing to Reach 400,000 Users",
-    summary: "Building growth loops into the product itself—not just the marketing funnel—is what separates products that scale from those that plateau. This case study breaks down how product-led marketing created compounding acquisition through embedded virality and word-of-mouth.",
-    url: "https://www.growthunhinged.com/p/product-led-marketing-to-reach-400000"
+    cat: "Growth Loops", pill: "pill-growth", source: "Growth Unhinged", date: "Mar 2025",
+    title: "The State of B2B Monetization in 2025",
+    summary: "B2B SaaS companies are now generating 40% of total new ARR from existing customers—up from 25% in 2022—signaling a fundamental shift toward expansion as the primary growth driver. Companies that master expansion through usage-based triggers and product-qualified account signals are consistently outperforming peers on NRR.",
+    url: "https://www.growthunhinged.com/p/2025-state-of-b2b-monetization"
+  },
+  {
+    cat: "Growth Loops", pill: "pill-growth", source: "PLGTM", date: "Nov 2025",
+    title: "Applying Lean Manufacturing Principles to SaaS GTM Strategies",
+    summary: "Lean manufacturing's core principle—eliminate waste at every step—maps directly onto PLG go-to-market: every friction point in the activation funnel is waste to be removed. Teams applying lean frameworks to their GTM are identifying and cutting low-signal touchpoints that slow users down without adding measurable value.",
+    url: "https://plgtm.substack.com/p/applying-lean-manufacturing-principles"
   }
 ];
 
@@ -398,6 +186,13 @@ function render() {
       <div class="card-title">${a.title}</div>
       <div class="card-summary">${a.summary}</div>
       <div class="card-footer">
+        <span class="pub-date">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="2" width="9" height="8" rx="1.5"/>
+            <path d="M1 5h9M4 1v2M7 1v2"/>
+          </svg>
+          ${a.date}
+        </span>
         <a class="read-link" href="${a.url}" target="_blank">
           Read Article
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -409,7 +204,7 @@ function render() {
   `).join('');
 }
 
-const d = new Date('2026-04-23');
+const d = new Date('2026-04-24');
 document.getElementById('dateDisplay').textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 render();
 </script>
