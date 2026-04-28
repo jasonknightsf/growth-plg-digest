@@ -3,225 +3,137 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Growth & PLG Intelligence — Daily Digest</title>
-<meta name="description" content="Daily curated articles, podcasts and videos on product-led growth, onboarding, conversion, and growth loops for SaaS teams.">
+<title>Growth & PLG Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif; background: #f5f6fa; color: #1a1d2e; min-height: 100vh; }
-  .header { background: #fff; border-bottom: 1px solid #e8eaf0; padding: 20px 32px 16px; position: sticky; top: 0; z-index: 10; }
-  .header-inner { max-width: 960px; margin: 0 auto; }
-  .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-  .header-left { display: flex; align-items: center; gap: 12px; }
-  .header-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .header-title { font-size: 17px; font-weight: 700; color: #1a1d2e; letter-spacing: -0.3px; line-height: 1.2; }
-  .header-sub { font-size: 12px; color: #9ca3af; margin-top: 2px; }
-  .header-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .badge { border-radius: 6px; padding: 4px 11px; font-size: 12px; font-weight: 600; }
-  .badge-date { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
-  .badge-count { background: #ede9fe; color: #7c3aed; border: 1px solid #ddd6fe; }
-  .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab { padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; border: 1.5px solid transparent; background: transparent; color: #6b7280; transition: all 0.12s; font-family: inherit; }
-  .tab:hover { background: #f3f4f6; color: #374151; }
-  .tab.active[data-cat="All"]               { background: #1a1d2e; color: #fff; border-color: #1a1d2e; }
-  .tab.active[data-cat="PLG Strategy"]      { background: #6366f1; color: #fff; border-color: #6366f1; }
-  .tab.active[data-cat="Onboarding & UX"]   { background: #0d9488; color: #fff; border-color: #0d9488; }
-  .tab.active[data-cat="Conversion & PQLs"] { background: #d97706; color: #fff; border-color: #d97706; }
-  .tab.active[data-cat="Growth Loops"]      { background: #2563eb; color: #fff; border-color: #2563eb; }
-  .tab.active[data-cat="Podcasts & Video"]  { background: #db2777; color: #fff; border-color: #db2777; }
-  .content { padding: 24px 32px 60px; max-width: 960px; margin: 0 auto; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 16px; }
-  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .header { padding: 16px 20px 14px; } .content { padding: 20px 20px 40px; } }
-  .card { background: #fff; border: 1px solid #e8eaf0; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; transition: box-shadow 0.15s, transform 0.15s; }
-  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
-  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .cat-pill { font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
-  .pill-plg        { background: #ede9fe; color: #6d28d9; }
-  .pill-onboarding { background: #ccfbf1; color: #0f766e; }
-  .pill-conversion { background: #fef3c7; color: #b45309; }
-  .pill-growth     { background: #dbeafe; color: #1d4ed8; }
-  .pill-podcast    { background: #fce7f3; color: #9d174d; }
-  .source-tag { font-size: 11px; font-weight: 600; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 5px; padding: 2px 8px; white-space: nowrap; }
-  .card-title { font-size: 14px; font-weight: 700; color: #111827; line-height: 1.45; letter-spacing: -0.2px; }
-  .card-summary { font-size: 13px; color: #4b5563; line-height: 1.65; flex: 1; }
-  .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f3f4f6; margin-top: 2px; }
-  .pub-date { font-size: 11px; font-weight: 500; color: #9ca3af; display: flex; align-items: center; gap: 4px; }
-  .read-link { font-size: 12.5px; font-weight: 600; color: #6366f1; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: opacity 0.12s; }
-  .read-link.podcast-link { color: #db2777; }
-  .read-link:hover { opacity: 0.7; }
-  .empty { text-align: center; padding: 80px 24px; color: #9ca3af; font-size: 14px; }
-  .page-footer { text-align: center; padding: 20px; font-size: 11.5px; color: #d1d5db; border-top: 1px solid #f3f4f6; margin-top: 20px; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b; }
+header { background:linear-gradient(135deg,#4f46e5,#7c3aed); color:white; padding:2.5rem 2rem 2rem; text-align:center; }
+header h1 { font-size:2rem; font-weight:700; margin-bottom:.5rem; }
+header p { opacity:.85; font-size:1rem; }
+.meta { font-size:.8rem; opacity:.7; margin-top:.5rem; }
+.tabs { display:flex; gap:.5rem; padding:1.5rem 2rem 0; flex-wrap:wrap; background:white; border-bottom:1px solid #e2e8f0; }
+.tab { padding:.6rem 1.2rem; border-radius:6px 6px 0 0; border:none; background:transparent; color:#64748b; font-size:.9rem; font-weight:500; cursor:pointer; transition:all .2s; }
+.tab:hover { background:#f1f5f9; color:#1e293b; }
+.tab.active { background:#4f46e5; color:white; }
+.tab.active[data-cat="onboarding"] { background:#0d9488; }
+.tab.active[data-cat="conversion"] { background:#d97706; }
+.tab.active[data-cat="loops"] { background:#2563eb; }
+.tab.active[data-cat="podcasts"] { background:#db2777; }
+.tab.active[data-cat="substack"] { background:#f97316; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; padding:2rem; max-width:1400px; margin:0 auto; }
+.card { background:white; border-radius:12px; padding:1.5rem; box-shadow:0 1px 3px rgba(0,0,0,.08); border:1px solid #e2e8f0; display:flex; flex-direction:column; gap:.75rem; transition:transform .2s,box-shadow .2s; }
+.card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.12); }
+.card-meta { display:flex; align-items:center; justify-content:space-between; gap:.5rem; flex-wrap:wrap; }
+.pill { font-size:.72rem; font-weight:600; padding:.25rem .65rem; border-radius:20px; white-space:nowrap; }
+.pill-plg { background:#ede9fe; color:#5b21b6; }
+.pill-onboarding { background:#ccfbf1; color:#0f766e; }
+.pill-conversion { background:#fef3c7; color:#92400e; }
+.pill-loops { background:#dbeafe; color:#1e40af; }
+.pill-podcast { background:#fce7f3; color:#9d174d; }
+.substack-badge { font-size:.65rem; font-weight:700; padding:.18rem .5rem; border-radius:20px; background:#fff7ed; color:#c2410c; border:1px solid #fed7aa; white-space:nowrap; }
+.card-date { display:flex; align-items:center; gap:.3rem; font-size:.75rem; color:#94a3b8; }
+.card-date svg { width:12px; height:12px; opacity:.7; }
+.source { font-size:.75rem; color:#94a3b8; font-weight:500; }
+.card h3 { font-size:1rem; font-weight:600; color:#0f172a; line-height:1.4; }
+.card p { font-size:.875rem; color:#475569; line-height:1.6; flex:1; }
+.card a { display:inline-block; margin-top:.25rem; padding:.5rem 1rem; background:#4f46e5; color:white; border-radius:6px; font-size:.8rem; font-weight:600; text-decoration:none; transition:background .2s; align-self:flex-start; }
+.card a:hover { background:#4338ca; }
+.podcast-link { background:#db2777 !important; }
+.podcast-link:hover { background:#be185d !important; }
+footer { text-align:center; padding:2rem; color:#94a3b8; font-size:.8rem; border-top:1px solid #e2e8f0; }
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div class="header-inner">
-    <div class="header-top">
-      <div class="header-left">
-        <div class="header-icon">⚡</div>
-        <div>
-          <div class="header-title">Growth &amp; PLG Intelligence</div>
-          <div class="header-sub">Daily digest · Articles, Podcasts &amp; Video · 2025–2026</div>
-        </div>
-      </div>
-      <div class="header-meta">
-        <span class="badge badge-date" id="dateDisplay"></span>
-        <span class="badge badge-count" id="countDisplay"></span>
-      </div>
-    </div>
-    <div class="tabs">
-      <button class="tab active" data-cat="All" onclick="filter('All')">All</button>
-      <button class="tab" data-cat="PLG Strategy" onclick="filter('PLG Strategy')">PLG Strategy</button>
-      <button class="tab" data-cat="Onboarding & UX" onclick="filter('Onboarding & UX')">Onboarding &amp; UX</button>
-      <button class="tab" data-cat="Conversion & PQLs" onclick="filter('Conversion & PQLs')">Conversion &amp; PQLs</button>
-      <button class="tab" data-cat="Growth Loops" onclick="filter('Growth Loops')">Growth Loops</button>
-      <button class="tab" data-cat="Podcasts & Video" onclick="filter('Podcasts & Video')">🎧 Podcasts &amp; Video</button>
-    </div>
-  </div>
+<header>
+  <h1>Growth & PLG Intelligence</h1>
+  <p>Daily digest of product-led growth strategy, onboarding, and conversion insights</p>
+  <div class="meta">Updated April 27, 2026 · Last 6 months only</div>
+</header>
+<div class="tabs">
+  <button class="tab active" data-cat="all" onclick="filter('all',this)">All</button>
+  <button class="tab" data-cat="plg" onclick="filter('plg',this)">PLG Strategy</button>
+  <button class="tab" data-cat="onboarding" onclick="filter('onboarding',this)">Onboarding & UX</button>
+  <button class="tab" data-cat="conversion" onclick="filter('conversion',this)">Conversion & PQLs</button>
+  <button class="tab" data-cat="loops" onclick="filter('loops',this)">Growth Loops</button>
+  <button class="tab" data-cat="podcasts" onclick="filter('podcasts',this)">🎙 Podcasts & Video</button>
+  <button class="tab" data-cat="substack" onclick="filter('substack',this)">✉️ Substack</button>
 </div>
-
-<div class="content">
-  <div class="grid" id="grid"></div>
-  <div class="empty" id="empty" style="display:none">No content in this category.</div>
-  <div class="page-footer">Updated daily · Articles, podcasts &amp; video from Lenny's, Reforge, ProductLed, Growth Unhinged, SaaStr &amp; more · Last 6 months only</div>
-</div>
-
+<div class="grid" id="grid"></div>
+<footer>Growth & PLG Intelligence · Auto-refreshed daily · Last 6 months only</footer>
 <script>
 const DATA = [
-  { cat:"PLG Strategy", pill:"pill-plg", source:"ProductLed", date:"Mar 2025",
-    title:"State of B2B SaaS in 2025: Analysis of 446 Companies",
-    summary:"Self-serve revenue is the single most powerful growth lever in B2B SaaS—yet 36.3% of companies still report zero self-serve revenue. Companies that make the transition see 25.9% better free-to-paid conversion and 18.3% faster time-to-value compared to peers.",
-    url:"https://productled.com/blog/state-of-b2b-saas-2025-report" },
-
-  { cat:"PLG Strategy", pill:"pill-plg", source:"ProductLed", date:"Nov 2025",
-    title:"PLG Predictions For 2026: The Playbook is Being Rewritten. Fast.",
-    summary:"AI onboarding now makes activation instant by eliminating multi-step walkthroughs and configuring experiences based on user goals in real time. The defining benchmark for 2026 is no longer 'value in the first session'—it's value delivered in under 60 seconds.",
-    url:"https://productled.com/blog/plg-predictions-for-2026" },
-
-  { cat:"PLG Strategy", pill:"pill-plg", source:"Growth Unhinged", date:"Feb 2025",
-    title:"The Best Growth Tactics of 2025",
-    summary:"Credit-based pricing surged through 2025, with 79 of the top 500 SaaS companies now offering it—up from 35 at the start of the year. For 2026, pricing is swinging back toward simplicity, with major platforms bundling AI at modest per-user increases rather than standalone AI tiers.",
-    url:"https://www.growthunhinged.com/p/2025-state-of-saas-pricing-changes" },
-
-  { cat:"PLG Strategy", pill:"pill-plg", source:"Growth Unhinged", date:"Jan 2025",
-    title:"2025 SaaS Benchmarks: What's Really Going On in Software",
-    summary:"The median B2B SaaS company planned for 35% growth in 2025 but achieved only 26%—a nine-point gap revealing how challenging the current environment is. Top performers are now generating 40% of new ARR from existing customers, up from 25% in 2022, marking a decisive shift toward expansion as the primary growth engine.",
-    url:"https://www.growthunhinged.com/p/2025-saas-benchmarks-report" },
-
-  { cat:"Onboarding & UX", pill:"pill-onboarding", source:"Growth Unhinged", date:"Apr 2025",
-    title:"Your Guide to Product-Led Onboarding",
-    summary:"Personalizing onboarding by asking users their primary reason for signing up is almost guaranteed to improve activation—yet most products still use a one-size-fits-all flow. The best sequences ask 1–2 targeted questions then tailor the entire experience around helping users reach their 'aha' moment as fast as possible.",
-    url:"https://www.growthunhinged.com/p/your-guide-to-product-led-onboarding" },
-
-  { cat:"Onboarding & UX", pill:"pill-onboarding", source:"PLGTM", date:"Dec 2025",
-    title:"Inside PLGTM 2025: A Recap and 2026 Plans",
-    summary:"The 2025 PLG landscape saw a decisive shift toward hybrid product-led sales motions, where self-serve adoption leads and enterprise sales layers on top at precisely the right moment. For 2026, the biggest opportunity is combining AI-assisted onboarding with usage-based triggers to qualify and route users more precisely.",
-    url:"https://plgtm.substack.com/p/inside-plgtm-2025-a-recap-and-2026" },
-
-  { cat:"Onboarding & UX", pill:"pill-onboarding", source:"NewTechnique", date:"Jun 2025",
-    title:"Tips on PLG Onboarding Flows",
-    summary:"The most effective PLG onboarding flows reduce cognitive load by surfacing only what the user needs to accomplish their immediate goal—not the full feature set. Three structural improvements—contextual empty states, inline guidance, and milestone celebrations—have the highest documented impact on activation rates.",
-    url:"https://newtechnique.substack.com/p/tips-on-plg-onboarding-flows" },
-
-  { cat:"Conversion & PQLs", pill:"pill-conversion", source:"Growth Unhinged", date:"Feb 2026",
-    title:"The 2026 Free-to-Paid Conversion Report",
-    summary:"The median free-to-paid conversion across SaaS sits at 8% in 2026, but products requiring a credit card at signup see 5x higher conversion—25–35% is good, 50–60% is great. Free trials dominate as the primary entry model at 57% of products, more than double the rate of freemium at 26%.",
-    url:"https://www.growthunhinged.com/p/free-to-paid-conversion-report" },
-
-  { cat:"Conversion & PQLs", pill:"pill-conversion", source:"SaaStr", date:"Sep 2025",
-    title:"85% of Business App Trials Start on Day 0. Don't Waste Your Shot.",
-    summary:"Analysis of 75,000 apps shows that 85% of trial users who will ever convert do so on the day they sign up—making Day 0 activation the single most critical window in your funnel. Products that fail to deliver a meaningful first-session experience almost never recover those users through follow-up or re-engagement.",
-    url:"https://cloud.substack.com/p/85-of-business-app-trials-start-on" },
-
-  { cat:"Conversion & PQLs", pill:"pill-conversion", source:"Substack", date:"Oct 2025",
-    title:"Your Trial-to-Paid Conversion is Where Revenue Goes to Die",
-    summary:"Most SaaS companies invest heavily in acquisition but leave conversion to chance—treating trial-to-paid as a passive event rather than an active design problem. The highest-converting products identify the specific action that predicts upgrade and engineer every onboarding touchpoint to get users there.",
-    url:"https://angelastewartai.substack.com/p/your-trial-to-paid-conversion-is" },
-
-  { cat:"Growth Loops", pill:"pill-growth", source:"Growth Unhinged", date:"Mar 2025",
-    title:"The State of B2B Monetization in 2025",
-    summary:"B2B SaaS companies are now generating 40% of total new ARR from existing customers—up from 25% in 2022—signaling a fundamental shift toward expansion as the primary growth driver. Companies mastering expansion through usage-based triggers and product-qualified account signals are consistently outperforming peers on NRR.",
-    url:"https://www.growthunhinged.com/p/2025-state-of-b2b-monetization" },
-
-  { cat:"Growth Loops", pill:"pill-growth", source:"PLGTM", date:"Nov 2025",
-    title:"Applying Lean Manufacturing Principles to SaaS GTM Strategies",
-    summary:"Lean manufacturing's core principle—eliminate waste at every step—maps directly onto PLG go-to-market: every friction point in the activation funnel is waste to be removed. Teams applying lean frameworks to their GTM are cutting low-signal touchpoints that slow users down without adding measurable value.",
-    url:"https://plgtm.substack.com/p/applying-lean-manufacturing-principles" },
-
-  { cat:"Podcasts & Video", pill:"pill-podcast", source:"Lenny's Podcast", date:"Dec 2025",
-    title:"The New AI Growth Playbook for 2026: How Lovable Hit $200M ARR in One Year",
-    summary:"Elena Verna reveals why 60–70% of traditional growth tactics no longer apply for AI products, drawing on Lovable's run to $200M ARR in under a year with just 100 employees. The episode reframes activation as a product team responsibility and introduces 'minimum lovable product' as the new bar replacing MVP.",
-    url:"https://www.lennysnewsletter.com/p/the-new-ai-growth-playbook-for-2026-elena-verna" },
-
-  { cat:"Podcasts & Video", pill:"pill-podcast", source:"SaaStr Podcast", date:"Aug 2025",
-    title:"PLG to Enterprise to SMB: How Calendly Balances Self-Serve and Sales",
-    summary:"Calendly's founder Tope Awotona shares how the company navigated from pure PLG to a hybrid model serving enterprise and SMB simultaneously. Candid lessons on when to layer in sales, how to control CAC as you scale, and keeping the product at the center of growth throughout.",
-    url:"https://saastr.libsyn.com/saastr-816" },
-
-  { cat:"Podcasts & Video", pill:"pill-podcast", source:"YouTube", date:"Sep 2025",
-    title:"Next-Gen PLG: How AI, Community & Personalization Redefine Growth in 2025",
-    summary:"Tactical session breaking down how leading PLG companies are moving beyond freemium and viral loops toward AI-powered, community-centric growth models. Covers real-time personalization in onboarding, community integration, and why the traditional PLG funnel is being replaced by a continuous activation loop.",
-    url:"https://www.youtube.com/watch?v=ttNQ3d5hvnw" },
-
-  { cat:"Podcasts & Video", pill:"pill-podcast", source:"YouTube", date:"Jan 2025",
-    title:"The 7 Key Strategies for Product Growth — Aakash Gupta",
-    summary:"PLG expert Aakash Gupta outlines seven concrete strategies for product-led growth, drawing on data from hundreds of SaaS companies. Covers PQL identification, activation rate optimization, and the specific metrics that separate top-quartile PLG companies from the rest.",
-    url:"https://www.youtube.com/watch?v=fXrzBfZk5zo" },
-
-  { cat:"Podcasts & Video", pill:"pill-podcast", source:"Spotify · Growth Machines", date:"2025",
-    title:"Pricing Challenges in PLG — Kyle Poyar (Growth Unhinged)",
-    summary:"Kyle Poyar breaks down the most common pricing mistakes PLG companies make—from freemium models that give away too much to credit-based tiers that confuse buyers. The conversation covers how to find the right monetization levers without killing the self-serve motion that got you there.",
-    url:"https://creators.spotify.com/pod/profile/vincent-jong/episodes/Pricing-challenges-in-PLG--Kyle-Poyar-e2t0t36" }
+  // ── PLG Strategy ──────────────────────────────────────────────────────────
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",source:"SaaS Mag",date:"Feb 2026",title:"PLG in 2026: Product-Led Growth Evolves Into Full-Stack GTM",summary:"The 2026 PLG playbook has evolved far beyond Slack's original freemium template, with top companies layering AI-driven onboarding, usage-based expansion, and sales-assisted motions into a full-stack GTM engine. Companies achieving 130%+ NRR are orchestrating self-serve for SMB, sales-assisted for mid-market, and enterprise motions simultaneously—all fed by a shared product-usage data lake.",url:"https://www.saasmag.com/product-led-growth-next-chapter-saas-2026/"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",source:"UserGuiding",date:"Jan 2026",title:"The State of Product-Led Growth in SaaS for 2026",summary:"This state-of-PLG report finds that 58% of SaaS companies now use a PLG model and 91% plan increased investment—yet only 27% achieve sustained year-over-year expansion revenue. The gap between PLG leaders and laggards is widening, driven primarily by how systematically companies convert free usage into seat growth and cross-product adoption.",url:"https://userguiding.com/blog/state-of-plg-in-saas"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",substack:true,source:"ProductLed",date:"Dec 2025",title:"PLG Predictions For 2026: The Playbook is Being Rewritten. Fast.",summary:"ProductLed's 2026 predictions center on AI-native onboarding that adapts entire activation sequences based on early behavioral signals, making static welcome flows obsolete for competitive products. The most disruptive shift: the PLG 'user' is increasingly an AI agent, fundamentally changing how activation metrics are defined, products are designed, and usage-based monetization is structured.",url:"https://productled.com/blog/plg-predictions-for-2026"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",substack:true,source:"Aakash Gupta · Substack",date:"Jan 2026",title:"How to Build Product-Led Growth in 2026: The Complete 7-Layer Playbook",summary:"This definitive PLG guide unpacks a 7-layer framework covering acquisition, activation, retention, expansion, and virality—grounded in data from companies like Cursor, which hit $2B ARR by February 2026 without hiring an enterprise sales rep until well past $200M. The central insight: PLG's economic advantage lives in expansion revenue compounding, not acquisition cost reduction.",url:"https://www.news.aakashg.com/p/plg-in-2026"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",source:"Growth With Gary",date:"Nov 2025",title:"Product-Led Growth Examples: 9 AI SaaS Companies That Cracked the Code",summary:"Analysis of nine AI SaaS companies reveals a consistent pattern: the fastest growers embed viral loops at the point of first value delivery rather than bolting them on as separate referral programs—creating self-reinforcing acquisition that compounds without paid spend. Cursor's trajectory to $500M ARR by mid-2025 shows how AI-native PLG can collapse growth timelines that previously required a decade into 18 months.",url:"https://growthwithgary.com/p/product-led-growth-examples"},
+  // ── Substack: PLG Strategy ────────────────────────────────────────────────
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",substack:true,source:"Lenny's Newsletter · Substack",date:"Feb 2026",title:"The New AI Growth Playbook for 2026 — Elena Verna",summary:"Elena Verna, head of growth at Lovable which hit $200M ARR in under a year with just 100 employees, explains how AI fundamentally rewrites the traditional PLG playbook—shifting from activation optimization to rapid feature innovation as the primary growth lever. She argues that AI-native companies should prioritize building new capabilities over refining funnels, because the product improvement loop now compounds faster than any conversion experiment.",url:"https://www.lennysnewsletter.com/p/the-new-ai-growth-playbook-for-2026-elena-verna"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",substack:true,source:"PLGTM · Substack",date:"Dec 2025",title:"Inside PLGTM 2025: A Recap and 2026 Plans",summary:"The PLGTM Summit recap documents a conference that grew 60%+ in attendance and pushed NPS from 74 to 83, with AI-driven predictive PQLs and agentic lifecycle orchestration emerging as the dominant practitioner themes. The event's evolution into 'Demand & Expand 2026' signals the broader industry shift from acquisition-focused PLG to a full-lifecycle, product-led revenue motion.",url:"https://plgtm.substack.com/p/inside-plgtm-2025-a-recap-and-2026"},
+  {cat:"plg",pill:"PLG Strategy",pillClass:"pill-plg",substack:true,source:"Bloom VP · Substack",date:"Jan 2026",title:"The Shift from PLG to PLS: A Smarter Path to Enterprise-Scale Growth",summary:"This essay argues that Product-Led Sales doesn't replace PLG but builds on it—the product remains the acquisition and activation engine while sales teams guide high-intent users across the enterprise finish line using PQL signals rather than cold outreach. The framework explains why PLG-seeded pipeline is now the most capital-efficient path to $100M ARR, outperforming both pure self-serve and traditional outbound motions.",url:"https://bloomvp.substack.com/p/the-shift-from-plg-to-pls-a-smarter"},
+  // ── Onboarding & UX ───────────────────────────────────────────────────────
+  {cat:"onboarding",pill:"Onboarding & UX",pillClass:"pill-onboarding",source:"Product School",date:"Oct 2025",title:"Product-Led Onboarding: How to Do It Right in 2025",summary:"Product-led onboarding has shifted from feature-centric tours to outcome-oriented flows that deliver the aha moment within 5–10 minutes of signup—directly addressing the 60–75% first-week churn rate that still plagues most SaaS products. Interactive checklists, OAuth signups, and template-first experiences are now table stakes; differentiation comes from real-time behavioral personalization that adjusts guidance based on each user's stated goals.",url:"https://productschool.com/blog/product-strategy/product-led-onboarding"},
+  {cat:"onboarding",pill:"Onboarding & UX",pillClass:"pill-onboarding",source:"Design Studio UI/UX",date:"Feb 2026",title:"SaaS Onboarding UX: Best Practices, Patterns & Examples (2026)",summary:"This UX pattern library documents progressive disclosure, contextual tooltips, and milestone-based checklists that improved Day-30 retention by up to 52% in controlled A/B tests, with personalized onboarding paths outperforming generic flows by 40% across retention metrics. AI-driven onboarding branching is now accessible to teams without dedicated data science resources.",url:"https://www.designstudiouiux.com/blog/saas-onboarding-ux/"},
+  {cat:"onboarding",pill:"Onboarding & UX",pillClass:"pill-onboarding",source:"Brightscout",date:"Mar 2026",title:"SaaS Onboarding UX: Why Most Products Lose Users in the First 7 Days",summary:"With average SaaS activation sitting at 37.5% in 2025, two-thirds of new users never experience a product's core value—a crisis rooted in onboarding UX that prioritizes feature completeness over value delivery speed. The research identifies three fatal UX anti-patterns ('feature dumps,' mandatory profile completion, and asynchronous aha moments) and the specific design changes that measurably resolve each one.",url:"https://www.brightscout.com/insight/saas-onboarding-ux"},
+  {cat:"onboarding",pill:"Onboarding & UX",pillClass:"pill-onboarding",source:"Formbricks",date:"Jan 2026",title:"7 User Onboarding Best Practices for 2026",summary:"A synthesis of 2026 onboarding research finds that behavior-triggered nudges outperform calendar-based email sequences by 3x on activation rate—firing when users are already engaged rather than on a predetermined schedule. Cutting time-to-value by just 20% has been shown to lift ARR growth by 18% for mid-market SaaS companies, making onboarding speed a board-level metric.",url:"https://formbricks.com/blog/user-onboarding-best-practices"},
+  // ── Substack: Onboarding ──────────────────────────────────────────────────
+  {cat:"onboarding",pill:"Onboarding & UX",pillClass:"pill-onboarding",substack:true,source:"Lenny's Newsletter · Substack",date:"Nov 2025",title:"Mastering Onboarding — Lauryn Isford (Head of Growth, Airtable)",summary:"Airtable's Head of Growth Lauryn Isford shares the specific onboarding overhaul that drove a 20% increase in activation rate, detailing how the team identified the true aha moment and rebuilt the entire new user experience around delivering it faster. Rich in tactical specificity, this is one of the most cited onboarding case studies in 2025 growth circles—covering everything from job-to-be-done segmentation to the exact sequence of tooltips that moved the needle.",url:"https://www.lennysnewsletter.com/p/mastering-onboarding-lauryn-isford"},
+  // ── Conversion & PQLs ─────────────────────────────────────────────────────
+  {cat:"conversion",pill:"Conversion & PQLs",pillClass:"pill-conversion",source:"1Capture",date:"Nov 2025",title:"Free Trial Conversion Benchmarks 2025: The Definitive Guide (10,000+ SaaS Companies)",summary:"Analysis of 10,000+ SaaS companies finds the global average trial-to-paid conversion rate at 24.8%, with top-quartile performers hitting 38.2% by combining AI-driven behavioral nudges with in-app milestone tracking triggered within the first 90 minutes of activity. Companies deploying AI-personalized welcome flows achieved a +6.1 percentage-point lift, translating to roughly $147K in additional ARR per company.",url:"https://www.1capture.io/blog/free-trial-conversion-benchmarks-2025"},
+  {cat:"conversion",pill:"Conversion & PQLs",pillClass:"pill-conversion",source:"Pulseahead",date:"Mar 2026",title:"Trial-to-Paid Conversion Benchmarks in SaaS: What Actually Works",summary:"The median free-to-paid conversion across 200 B2B products is 8%, but the distribution is bimodal—you're either in the low single digits or above 15%, with the gap explained almost entirely by activation rate and time to first value. Opt-out trials still convert at 48.8% versus 18.2% for opt-in models, confirming that commitment mechanics remain the strongest single conversion lever available.",url:"https://www.pulseahead.com/blog/trial-to-paid-conversion-benchmarks-in-saas"},
+  {cat:"conversion",pill:"Conversion & PQLs",pillClass:"pill-conversion",source:"GoConsensus",date:"Feb 2026",title:"The Complete Guide to Product Qualified Leads (PQLs) for 2026",summary:"PQLs convert at 5–6x the rate of marketing qualified leads because behavioral signals—feature adoption depth, team expansion events, and usage frequency—are far stronger predictors of purchase intent than firmographic data. Only 24–25% of PLG companies have a functioning PQL framework, representing the largest untapped conversion lever in most SaaS GTM stacks.",url:"https://goconsensus.com/blog/product-qualified-leads"},
+  {cat:"conversion",pill:"Conversion & PQLs",pillClass:"pill-conversion",source:"Howdygo",date:"Jan 2026",title:"Product Qualified Leads: The 2026 Guide (Beyond Free Trials)",summary:"This guide extends PQL thinking beyond initial activation to ongoing signals—feature combinations predicting expansion, team-size thresholds triggering enterprise conversations, and usage dips surfacing churn risk before it hits revenue. Companies using ML models trained on closed-won data are achieving 25–30% free-trial conversion versus the industry-standard single-digit baseline.",url:"https://www.howdygo.com/blog/product-qualified-leads"},
+  {cat:"conversion",pill:"Conversion & PQLs",pillClass:"pill-conversion",source:"Maxio",date:"Oct 2025",title:"2025 B2B SaaS Benchmarks Report",summary:"Maxio's annual benchmarks covering hundreds of SaaS companies finds average annual retention at 74%, while elite companies hit 90%+ GRR and 120%+ NRR—a gap that correlates with whether companies have a systematic expansion motion or rely on organic upsells. The report benchmarks CAC, NRR distributions, and growth rates by company stage and go-to-market model.",url:"https://www.maxio.com/resources/2025-saas-benchmarks-report"},
+  // ── Growth Loops ──────────────────────────────────────────────────────────
+  {cat:"loops",pill:"Growth Loops",pillClass:"pill-loops",source:"Chameleon",date:"Dec 2025",title:"Product-Led Growth Flywheel 101: 5 Steps to Launching a PLG Framework",summary:"Chameleon's five-step PLG flywheel framework operationalizes the concept into concrete activation milestones, viral mechanics, and expansion triggers—drawing on Calendly, Loom, and Figma, whose shared links and branded outputs each serve simultaneously as product usage and acquisition channels. A well-designed growth loop delivers users who already understand the product's value, cutting sales CAC while raising expansion NRR simultaneously.",url:"https://www.chameleon.io/blog/plg-flywheel"},
+  {cat:"loops",pill:"Growth Loops",pillClass:"pill-loops",source:"Ideaplan",date:"Mar 2026",title:"Advanced PLG Monetization: 7 Revenue Levers Beyond Pricing in 2026",summary:"This analysis identifies seven monetization levers beyond standard pricing: collaborative expansion signals, AI-generated upgrade triggers, workflow lock-in depth, ecosystem integrations, community-led virality, data network effects, and outcome-based pricing pilots. PLG companies in the top expansion quartile generate 40–60% of ARR from existing customers—a 50–100% valuation premium over laggards at equivalent revenue scale.",url:"https://www.ideaplan.io/blog/advanced-plg-monetization-strategies-2026"},
+  // ── Substack: Growth Loops ────────────────────────────────────────────────
+  {cat:"loops",pill:"Growth Loops",pillClass:"pill-loops",substack:true,source:"Growth Unhinged · Substack",date:"Jan 2026",title:"The Best Growth Tactics of 2025",summary:"Kyle Poyar's synthesis of growth experiments from hundreds of SaaS operators finds PLG accounted for 10% of reported tactics in 2025, with outbound/ABM (20%), partner/ecosystem (20%), and events/community (16%) leading the mix—signaling that pure PLG is now one lever in a mature, multi-channel stack. The data provides a rare benchmark for where growth budget and effort are actually going versus where they were five years ago.",url:"https://www.growthunhinged.com/p/the-best-growth-tactics-of-2025"},
+  // ── Podcasts & Video ──────────────────────────────────────────────────────
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",substack:true,source:"Lenny's Podcast · Substack",date:"Jan 2026",title:"Molly Graham on Scaling Teams, Growth & OKRs",summary:"Lenny Rachitsky interviews Molly Graham on how high-growth companies architect OKRs, manage retention metrics, and build hiring funnels as they scale from Series A through IPO—with frameworks for aligning product and growth teams around shared activation goals. Essential for product leaders managing multi-team complexity where PLG motions must stay coherent across engineering, design, and go-to-market.",url:"https://open.spotify.com/show/2dR1MUZEHCOnz1LVfNac0j"},
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",substack:true,source:"Lenny's Podcast · Substack",date:"Dec 2025",title:"Matt MacInnis (CPO, Rippling) on Growth, Retention & Experimentation",summary:"Rippling's CPO Matt MacInnis breaks down how the company uses product-usage signals to identify churn risk and expansion opportunities at scale, sharing experimentation frameworks that let product and growth teams move fast without fragmenting the user experience. A tactical deep-dive for PLG practitioners working on enterprise products where behavioral scoring must function across complex multi-seat accounts.",url:"https://open.spotify.com/show/2dR1MUZEHCOnz1LVfNac0j"},
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",substack:true,source:"Growth Unhinged · Substack",date:"Dec 2025",title:"Mostly Growth: What You Might've Missed in PLG & SaaS This Year",summary:"Kyle Poyar and CJ Gustafson co-host this rapid-fire year-in-review unpacking the biggest GTM and PLG shifts of 2025—from mainstream adoption of usage-based pricing to AI agents qualifying trial users in real time. Essential listening for operators who need crisp mental models for communicating PLG trends to executive stakeholders.",url:"https://www.growthunhinged.com/t/podcast"},
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",source:"ProductLed Podcast",date:"Jan 2026",title:"The Product-Led Playbook with Wes Bush: Multi-Million Dollar PLG on a Lean Team",summary:"Wes Bush walks through core frameworks from his Product-Led Playbook in a limited-series format—each episode covering a chapter from defining the ideal free user profile to engineering viral loops that compound growth without increasing headcount. The series offers rare specificity on how lean teams build scalable PLG engines, with benchmarks across multiple SaaS verticals.",url:"https://open.spotify.com/show/599Pg4sTXDPSJBI8N5spt2"},
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",source:"SaaStr Podcast",date:"Jan 2026",title:"SaaStr 787: The 2025 SaaS Vibe Check — What Founders Need to Know",summary:"Jason Lemkin's annual vibe check surveys SaaS heading into 2026, documenting the paradox of record software spend coexisting with brutal economics for most companies—and where PLG fits into a landscape where capital efficiency separates winners. The episode frames why NRR, not ARR, now drives the highest SaaS valuations.",url:"https://podcasts.apple.com/us/podcast/saastr-787-the-2025-saas-vibe-check-what-founders/id1089973241?i=1000694023603"},
+  {cat:"podcasts",pill:"Podcasts & Video",pillClass:"pill-podcast",source:"Grow Your B2B SaaS",date:"Feb 2026",title:"How PLG Will Change in 2026: AI Agents, Onboarding & Hybrid GTM",summary:"Joran Hofman's live SaaS Summit episode with Roelof Otten examines how AI agents are reshaping product-led onboarding—automating user qualification in real time and surfacing expansion signals to sales before a human would notice them. A grounded breakdown of what hybrid PLG plus AI GTM motions look like operationally for B2B founders navigating the 2026 landscape.",url:"https://www.listennotes.com/podcasts/grow-your-b2b-saas-joran-hofman-ajzZxgEs6GS/"}
 ];
 
-let currentCat = 'All';
+let active='all';
 
-function filter(cat) {
-  currentCat = cat;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelector('.tab[data-cat="' + cat + '"]').classList.add('active');
+function filter(cat,el){
+  active=cat;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
   render();
 }
 
-function render() {
-  const list = currentCat === 'All' ? DATA : DATA.filter(a => a.cat === currentCat);
-  const grid = document.getElementById('grid');
-  const empty = document.getElementById('empty');
-  document.getElementById('countDisplay').textContent = list.length + ' item' + (list.length !== 1 ? 's' : '');
-  if (!list.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  const isPodcast = a => a.cat === 'Podcasts & Video';
-  grid.innerHTML = list.map(a => `
+function render(){
+  let items;
+  if(active==='all') items=DATA;
+  else if(active==='substack') items=DATA.filter(d=>d.substack);
+  else items=DATA.filter(d=>d.cat===active);
+
+  document.getElementById('grid').innerHTML=items.map(d=>`
     <div class="card">
-      <div class="card-top">
-        <span class="cat-pill ${a.pill}">${a.cat}</span>
-        <span class="source-tag">${a.source}</span>
-      </div>
-      <div class="card-title">${a.title}</div>
-      <div class="card-summary">${a.summary}</div>
-      <div class="card-footer">
-        <span class="pub-date">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="1" y="2" width="9" height="8" rx="1.5"/>
-            <path d="M1 5h9M4 1v2M7 1v2"/>
-          </svg>
-          ${a.date}
+      <div class="card-meta">
+        <span class="pill ${d.pillClass}">${d.pill}</span>
+        <span style="display:flex;align-items:center;gap:.4rem;">
+          ${d.substack?'<span class="substack-badge">✉️ Substack</span>':''}
+          <span class="card-date">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            ${d.date}
+          </span>
         </span>
-        <a class="read-link ${isPodcast(a) ? 'podcast-link' : ''}" href="${a.url}" target="_blank">
-          ${isPodcast(a) ? '🎧 Listen / Watch' : 'Read Article'}
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 5.5h8M5.5 1 10 5.5 5.5 10"/>
-          </svg>
-        </a>
       </div>
-    </div>
-  `).join('');
+      <div class="source">${d.source}</div>
+      <h3>${d.title}</h3>
+      <p>${d.summary}</p>
+      <a href="${d.url}" target="_blank" class="${d.cat==='podcasts'?'podcast-link':''}">${d.cat==='podcasts'?'🎧 Listen / Watch':'Read Article'}</a>
+    </div>`).join('');
 }
 
-const d = new Date('2026-04-24');
-document.getElementById('dateDisplay').textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 render();
 </script>
 </body>
