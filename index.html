@@ -226,7 +226,7 @@ function render() {
   `).join('');
 }
 
-const d = new Date('2026-04-24');
+const d = new Date();
 document.getElementById('dateDisplay').textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 render();
 </script>
