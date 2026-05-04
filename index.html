@@ -6,56 +6,56 @@
 <title>Growth & PLG Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root { color-scheme: light; }
+:root { color-scheme: dark; }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',sans-serif; background:#f1f5f9; color:#1e293b; }
-.header { background:#000; border-bottom:1px solid #1f1f1f; padding:20px 32px 16px; position:sticky; top:0; z-index:10; }
+body { font-family:'Inter',sans-serif; background:#08080f; color:#e2e8f0; }
+.header { background:#000; border-bottom:1px solid #1a1a1a; padding:20px 32px 16px; position:sticky; top:0; z-index:10; }
 .header-inner { max-width:1200px; margin:0 auto; }
 .header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
 .header-left { display:flex; align-items:center; gap:16px; }
 .ts-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
 .ts-wordmark { font-size:15px; font-weight:700; color:#fff; letter-spacing:-0.3px; line-height:1; }
-.header-divider { width:1px; height:28px; background:#333; flex-shrink:0; }
+.header-divider { width:1px; height:28px; background:#2a2a2a; flex-shrink:0; }
 .header-title { font-size:15px; font-weight:600; color:#fff; letter-spacing:-0.2px; line-height:1.2; }
-.header-sub { font-size:11.5px; color:#6b7280; margin-top:3px; }
+.header-sub { font-size:11.5px; color:#4b5563; margin-top:3px; }
 .header-meta { display:flex; align-items:center; gap:8px; flex-shrink:0; }
 .badge { border-radius:6px; padding:4px 11px; font-size:12px; font-weight:600; }
-.badge-date { background:#1a1a1a; color:#9ca3af; border:1px solid #2a2a2a; }
-.badge-count { background:#1a1a1a; color:#818cf8; border:1px solid #2a2a2a; }
+.badge-date { background:#111; color:#6b7280; border:1px solid #1f1f1f; }
+.badge-count { background:#111; color:#818cf8; border:1px solid #1f1f1f; }
 .tabs { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-top:2px; flex-wrap:nowrap; padding-bottom:2px; }
 .tabs::-webkit-scrollbar { display:none; }
-.tab { padding:6px 16px; border-radius:20px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; border:1.5px solid #2a2a2a; background:transparent; color:#9ca3af; transition:all 0.12s; font-family:inherit; }
-.tab:hover { background:#1a1a1a; color:#e5e7eb; border-color:#444; }
-.tab.active { background:#fff; color:#000; border-color:#fff; }
-.tab.active[data-cat="plg"] { background:#6366f1; color:#fff; border-color:#6366f1; }
-.tab.active[data-cat="onboarding"] { background:#0d9488; color:#fff; border-color:#0d9488; }
-.tab.active[data-cat="conversion"] { background:#d97706; color:#fff; border-color:#d97706; }
-.tab.active[data-cat="loops"] { background:#2563eb; color:#fff; border-color:#2563eb; }
-.tab.active[data-cat="podcasts"] { background:#db2777; color:#fff; border-color:#db2777; }
-.tab.active[data-cat="substack"] { background:#ff6719; color:#fff; border-color:#ff6719; }
-.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.2rem; padding:1.25rem 2rem; max-width:1200px; margin:0 auto; }
-.card { background:#fff; border-radius:12px; padding:1.25rem; box-shadow:0 1px 3px rgba(0,0,0,.07); border:1px solid #e2e8f0; display:flex; flex-direction:column; gap:.65rem; transition:transform .2s,box-shadow .2s; }
-.card:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.11); }
+.tab { padding:6px 16px; border-radius:20px; font-size:13px; font-weight:500; cursor:pointer; white-space:nowrap; border:1.5px solid #222; background:transparent; color:#6b7280; transition:all 0.12s; font-family:inherit; }
+.tab:hover { background:#111; color:#d1d5db; border-color:#333; }
+.tab.active                          { background:#fff;    color:#000;  border-color:#fff; }
+.tab.active[data-cat="plg"]          { background:#6366f1; color:#fff;  border-color:#6366f1; }
+.tab.active[data-cat="onboarding"]   { background:#0d9488; color:#fff;  border-color:#0d9488; }
+.tab.active[data-cat="conversion"]   { background:#d97706; color:#fff;  border-color:#d97706; }
+.tab.active[data-cat="loops"]        { background:#2563eb; color:#fff;  border-color:#2563eb; }
+.tab.active[data-cat="podcasts"]     { background:#db2777; color:#fff;  border-color:#db2777; }
+.tab.active[data-cat="substack"]     { background:#ff6719; color:#fff;  border-color:#ff6719; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.2rem; padding:1.5rem 2rem; max-width:1200px; margin:0 auto; }
+.card { background:#0f0f17; border-radius:12px; padding:1.25rem; border:1px solid #1a1a2e; display:flex; flex-direction:column; gap:.65rem; transition:transform .2s,box-shadow .2s,border-color .2s; }
+.card:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,.5); border-color:#2a2a3e; }
 .card-meta { display:flex; align-items:center; justify-content:space-between; gap:.5rem; flex-wrap:wrap; }
 .pill { font-size:.7rem; font-weight:600; padding:.2rem .6rem; border-radius:20px; white-space:nowrap; }
-.pill-plg { background:#ede9fe; color:#5b21b6; }
-.pill-onboarding { background:#ccfbf1; color:#0f766e; }
-.pill-conversion { background:#fef3c7; color:#92400e; }
-.pill-loops { background:#dbeafe; color:#1e40af; }
-.pill-podcast { background:#fce7f3; color:#9d174d; }
-.pill-substack { background:#fff7ed; color:#c2410c; }
-.card-date { display:flex; align-items:center; gap:.3rem; font-size:.72rem; color:#94a3b8; }
-.card-date svg { width:11px; height:11px; opacity:.7; }
-.source { font-size:.72rem; color:#94a3b8; font-weight:500; }
-.card h3 { font-size:.95rem; font-weight:600; color:#0f172a; line-height:1.4; }
-.card p { font-size:.84rem; color:#475569; line-height:1.6; flex:1; }
+.pill-plg        { background:#1e1b4b; color:#a78bfa; }
+.pill-onboarding { background:#022c2a; color:#2dd4bf; }
+.pill-conversion { background:#2a1a00; color:#fbbf24; }
+.pill-loops      { background:#0f1f4a; color:#60a5fa; }
+.pill-podcast    { background:#3d0026; color:#f472b6; }
+.pill-substack   { background:#2d1500; color:#fb923c; }
+.card-date { display:flex; align-items:center; gap:.3rem; font-size:.72rem; color:#4b5563; }
+.card-date svg { width:11px; height:11px; opacity:.6; }
+.source { font-size:.72rem; color:#4b5563; font-weight:500; }
+.card h3 { font-size:.95rem; font-weight:600; color:#f1f5f9; line-height:1.4; }
+.card p { font-size:.84rem; color:#94a3b8; line-height:1.6; flex:1; }
 .card a { display:inline-block; margin-top:.2rem; padding:.45rem .9rem; background:#4f46e5; color:white; border-radius:6px; font-size:.78rem; font-weight:600; text-decoration:none; transition:background .2s; align-self:flex-start; }
 .card a:hover { background:#4338ca; }
-.podcast-link { background:#db2777 !important; }
+.podcast-link  { background:#db2777 !important; }
 .podcast-link:hover { background:#be185d !important; }
 .substack-link { background:#ff6719 !important; }
 .substack-link:hover { background:#ea580c !important; }
-footer { text-align:center; padding:1.5rem 1rem; color:#94a3b8; font-size:.75rem; border-top:1px solid #e2e8f0; margin-top:.5rem; }
+footer { text-align:center; padding:1.5rem 1rem; color:#374151; font-size:.75rem; border-top:1px solid #111; margin-top:.5rem; }
 </style>
 </head>
 <body>
